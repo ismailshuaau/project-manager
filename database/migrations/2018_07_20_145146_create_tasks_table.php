@@ -22,7 +22,8 @@ class CreateTasksTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->unsignedInteger('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->unsignedInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -36,8 +37,5 @@ class CreateTasksTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tasks');
-        $table->dropForeign('tasks_project_id_foreign');
-        $table->dropForeign('tasks_project_id_foreign');
-        $table->dropForeign('tasks_company_id_foreign');
     }
 }

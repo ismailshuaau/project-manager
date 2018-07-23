@@ -33,7 +33,5 @@ class CreateProjectsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('projects');
-        $table->dropForeign('projects_user_id_foreign');
-        $table->dropForeign('projects_conpany_id_foreign');
     }
 }
